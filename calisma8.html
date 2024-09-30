@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML DERSLERİ - 11</title>
+    <style>
+        .baskent{
+            background-color:yellowgreen
+        }
+        .ulke{
+            background-color: purple;
+        }
+        .baskent.ulke {
+            background-color: red; /* Hem baskent hem ulke olduğunda sarı-yeşil yap */
+        }
+        .ulke.baskent{
+            background-color: aqua;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>HTML DERSLERİ 11 - SINIFLAR (CLASSES)</h1>
+
+    <div class="baskent">
+        Ankara
+    </div>
+    
+    <div class="ulke">
+        Türkiye
+    </div>
+
+    <div class="baskent">
+        Paris
+    </div>
+
+    <div class="ulke">
+        Fransa
+    </div>
+
+    <div class="baskent ulke">
+        Deneme
+    </div>
+
+    <div class="ulke baskent">
+        Deneme2
+    </div>
+
+    
+
+</body>
+</html>
+<!--
+CSS'de aynı elemente birden fazla sınıf (class) uygulanmışsa ve bu sınıfların özellikleri çakışıyorsa,
+CSS spesifikliği ve öncelik kuralları devreye girer. Burada önemli olan, CSS'in "kaskad" (cascade) doğasıdır.
+Aynı özellik iki farklı class'ta belirtilmişse ve aynı spesifiklik seviyesine sahipse, en son tanımlanan kural uygulanır.
+
+Senin örneğinde iki class'ın da background-color özelliği var:
+Her iki div de hem .baskent hem de .ulke sınıfına sahip. CSS, son tanımlanan kuralı dikkate alır ve .ulke sınıfı daha sonra geldiği için (mor renkte tanımlı), arka plan rengi mor olarak görünür.
+Yani, sınıfların yazılış sırasından bağımsız olarak, CSS tanım sırası önemlidir.
+
+Bu durumu düzeltmek için iki yol var:
+Daha spesifik CSS kuralları kullanarak: Eğer bir elementin hem .baskent hem de .ulke sınıflarına sahip olduğunda hangi rengi kullanmak istediğini belirtirsen, bu öncelikli olur:
+.baskent.ulke {
+    background-color: yellowgreen; /* Hem baskent hem ulke çağırıldığında sarı-yeşil yap */
+}
+    CSS'de sınıfların yazılış sırası, tanımda belirttiğin şekliyle fark yaratmaz.
+    Yani .baskent.ulke ile .ulke.baskent arasında bir fark yoktur; her iki sınıf birleşimi de aynı spesifiklik seviyesine sahiptir ve CSS motoru bunları aynı şekilde değerlendirir.
+
+Bu nedenle, eğer şu iki kuralı tanımlarsan:
+.baskent.ulke {
+    background-color: yellowgreen;
+}
+
+.ulke.baskent {
+    background-color: purple;
+}
+
+Her iki sınıf birleşimi de aynı spesifiklik seviyesine sahip olduğu için, en son tanımlanan kural geçerli olacaktır.
+Yani burada .ulke.baskent kuralı son olarak tanımlandıysa, mor arka plan (purple) uygulanır.
+Bu, CSS'in "kaskad" doğasıdır; aynı spesifiklik seviyesinde olan kurallarda, en son tanımlanan kural uygulanır.
+Eğer spesifikliği artırarak belirli bir sıralamaya göre öncelik vermek istersen, bu kuralların yerini değiştirebilirsin veya daha spesifik seçimler kullanabilirsin.
+Bizim örnekte son tanımlanan aqua oldugu için arkaplan rengini aqua aldı.
+Etiket içindeki classları yazma(çağırma) sıramız önemli değildir ama tanımlarken tam tersi; son tanım(kural) baz alınır.
+
+Etiket içinde class'ların yazılış sırası önemli değildir: HTML'de <div class="baskent ulke"> veya <div class="ulke baskent"> yazmanız arasında fark yoktur. 
+Class'ların hangi sırayla yazıldığı CSS için bir öncelik anlamına gelmez.
+
+Tanımlama sırasında son kural geçerli olur: CSS'de aynı spesifiklik seviyesine sahip iki kural çakıştığında, en son tanımlanan kural geçerli olur. 
+Yani .baskent.ulke ile .ulke.baskent aynı spesifiklik seviyesinde oldukları için, hangisi daha sonra tanımlandıysa, o kural uygulanır.
+
+-Etiket içindeki class sırası önemli değil, ama tanımlarken en son yazılan kural baz alınır.
+-->
